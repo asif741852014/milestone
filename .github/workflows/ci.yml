@@ -1,0 +1,19 @@
+name: Milestone Event Tracker
+
+on:
+  milestone:
+    types: 
+      - created
+      - closed
+      - edited
+
+jobs:
+  log_milestone_event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Milestone Event
+        run: |
+          echo "Milestone Event: ${{ github.event.action }}"
+          echo "Milestone Title: ${{ github.event.milestone.title }}"
+          echo "Milestone Description: ${{ github.event.milestone.description }}"
+          echo "Milestone Due Date: ${{ github.event.milestone.due_on }}"
